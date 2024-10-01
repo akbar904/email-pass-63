@@ -30,29 +30,48 @@
         "package:flutter/material.dart",
         "screens/login/login_screen.dart",
         "cubits/auth_cubit.dart",
-        "package:flutter_bloc/flutter_bloc.dart"
+        "package:flutter_bloc/flutter_bloc.dart",
+        "screens/home/home_screen.dart"
       ]
     },
     {
       "name": "lib/screens/login/login_screen.dart",
       "description": "Defines the LoginScreen widget which contains the UI and interactions for user login.",
       "class_diagram": "@startuml\nclass LoginScreen {\n}\n@enduml",
-      "methods": [],
+      "methods": [
+        {
+          "name": "build",
+          "description": "Builds the LoginScreen widget.",
+          "parameters": [
+            "BuildContext context"
+          ],
+          "return_type": "Widget"
+        }
+      ],
       "dependencies": [
         "package:flutter/material.dart",
-        "cubits/auth_cubit.dart",
-        "package:flutter_bloc/flutter_bloc.dart"
+        "package:flutter_bloc/flutter_bloc.dart",
+        "../../cubits/auth_cubit.dart"
       ]
     },
     {
       "name": "lib/screens/home/home_screen.dart",
       "description": "Defines the HomeScreen widget which contains the UI and interactions for the home page.",
       "class_diagram": "@startuml\nclass HomeScreen {\n}\n@enduml",
-      "methods": [],
+      "methods": [
+        {
+          "name": "build",
+          "description": "Builds the HomeScreen widget.",
+          "parameters": [
+            "BuildContext context"
+          ],
+          "return_type": "Widget"
+        }
+      ],
       "dependencies": [
         "package:flutter/material.dart",
-        "cubits/auth_cubit.dart",
-        "package:flutter_bloc/flutter_bloc.dart"
+        "package:flutter_bloc/flutter_bloc.dart",
+        "../../cubits/auth_cubit.dart"
       ]
     },
     {
@@ -74,18 +93,79 @@
           "description": "Handles user logout.",
           "parameters": null,
           "return_type": "void"
+        },
+        {
+          "name": "emailChanged",
+          "description": "Handles changes to the email.",
+          "parameters": [
+            "String email"
+          ],
+          "return_type": "void"
+        },
+        {
+          "name": "passwordChanged",
+          "description": "Handles changes to the password.",
+          "parameters": [
+            "String password"
+          ],
+          "return_type": "void"
         }
       ],
       "dependencies": [
         "package:bloc/bloc.dart",
+        "package:equatable/equatable.dart",
         "models/user_model.dart"
       ]
     },
     {
       "name": "lib/models/user_model.dart",
       "description": "Defines the UserModel which represents the user data.",
-      "class_diagram": "@startuml\nclass UserModel {\n}\n@enduml",
-      "methods": [],
+      "class_diagram": "@startuml\nclass UserModel {\n  +String id\n  +String email\n  +UserModel.fromJson(Map<String, dynamic> json)\n  +Map<String, dynamic> toJson()\n  +bool operator ==(Object other)\n  +int get hashCode\n  +String toString()\n}\n@enduml",
+      "methods": [
+        {
+          "name": "UserModel",
+          "description": "Constructor for UserModel class.",
+          "parameters": [
+            "id",
+            "email"
+          ],
+          "return_type": null
+        },
+        {
+          "name": "fromJson",
+          "description": "Factory constructor to create a UserModel instance from a JSON map.",
+          "parameters": [
+            "json"
+          ],
+          "return_type": "UserModel"
+        },
+        {
+          "name": "toJson",
+          "description": "Converts the UserModel instance to a JSON map.",
+          "parameters": [],
+          "return_type": "Map<String, dynamic>"
+        },
+        {
+          "name": "operator ==",
+          "description": "Overrides the equality operator to compare UserModel instances.",
+          "parameters": [
+            "other"
+          ],
+          "return_type": "bool"
+        },
+        {
+          "name": "hashCode",
+          "description": "Overrides the hashCode getter.",
+          "parameters": null,
+          "return_type": "int"
+        },
+        {
+          "name": "toString",
+          "description": "Overrides the toString method to provide a string representation of the UserModel instance.",
+          "parameters": [],
+          "return_type": "String"
+        }
+      ],
       "dependencies": []
     }
   ],
